@@ -12034,8 +12034,34 @@ textarea.form-control-lg {
 }
 .sidebar {
   width: 280px;
+  margin-left: -280px;
+  transition: margin-left 0.25s;
 }
 
 .main {
+  width: 100%;
+}
+
+.sidebar-toggled .sidebar {
+  margin-left: 0;
+}
+.sidebar-toggled .main {
   width: calc(100vw - 280px);
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    width: 280px;
+    margin-left: 0;
+  }
+  .main {
+    width: calc(100vw - 280px);
+  }
+  .sidebar-toggled .sidebar {
+    margin-left: -280px;
+  }
+  .sidebar-toggled .main {
+    width: 100%;
+    margin-left: 0;
+  }
 }/*# sourceMappingURL=all.css.map */
