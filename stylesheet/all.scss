@@ -1,8 +1,14 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-// 需先引入functions
 @import "../node_modules/bootstrap/scss/functions";
 
-// 2. 引入自己的scss
-// @imoprt "./helpers/variables";
+// 2. var
+@import "./helpers/variables";
 
+// bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+// custom
+@import "./helpers/utilities";
+
+// components
+@import "./components/sidebar";
