@@ -5,27 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>首頁</title>
 </head>
 <body class="vsc-initialized" id="app">
     <div :class="{ 'sidebar-toggled': ToggleMenuOnclick }">
         <div class="d-flex">
-            <aside class="sidebar vh-100 border-end">
-    
+            <aside class="sidebar vh-100 border-end d-flex flex-column">
+                <!-- 1. 後台名稱 -->
+                <div class="px-4 py-3">
+                    <strong>六角西餐廳</strong>
+                    - 後臺管理
+                </div>
+                <!-- 2.選單 -->
+                <div class="overflow-auto">
+                    <div>
+                        <a href="#" class="sidebar-link active">
+                            <div class="px-4">
+                                <i class="bi bi-house"></i>
+                                首頁
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a href="#menu-order" class="sidebar-link" data-bs-toggle="collapse">
+                            <div class="d-flex justify-content-between px-4">
+                                <p class="mb-0">
+                                    <i class="bi bi-card-list"></i>
+                                    訂單管理
+                                </p>
+                                <i class="bi bi-caret-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="menu-order">
+                            <a href="#" class="sidebar-link">
+                                <div class="ps-5">
+                                    訂單列表
+                                </div>
+                            </a>
+                            <a href="#" class="sidebar-link">
+                                <div class="ps-5">
+                                    單一訂單細節
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="sidebar-link">
+                            <div class="px-4">
+                                <i class="bi bi-list-task"></i>
+                                參考連結
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="sidebar-link">
+                            <div class="px-4">
+                                <i class="bi bi-list-task"></i>
+                                參考連結
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="sidebar-link">
+                            <div class="px-4">
+                                <i class="bi bi-list-task"></i>
+                                參考連結
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="sidebar-link">
+                            <div class="px-4">
+                                <i class="bi bi-list-task"></i>
+                                參考連結
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" class="sidebar-link">
+                            <div class="px-4">
+                                <i class="bi bi-list-task"></i>
+                                參考連結
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- 3. 登出 -->
+                <a href="#" class="mt-auto">
+                    <div class="px-4 sidebar-link">
+                        登出
+                    </div>
+                </a>
             </aside>
             <main class="main">
-                <div class="bg-white w-100 border-bottom">
+                <div class="bg-white w-100 border-bottom sticky-top">
                     <a href="#" class="py-3 px-4 d-inline-block border-end" id="toggle-btn" @click.preventDefault="changeToggleMenuBtn">
                         <i class="bi bi-arrows-angle-expand"></i>
                     </a>
                 </div>
+                <!-- 主要內容 -->
+
+                
             </main>
         </div>
     </div>
 </body>
 <!-- <script src="javascripts/all.js"></script> -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script>
+
+
     const app = {
         //資料(函式)
         data() {
