@@ -5,21 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>首頁</title>
 </head>
-<body class="vsc-initialized">
-    <div class="d-flex">
-        <aside class="sidebar vh-100 border-end">
-
-        </aside>
-        <main class="main">
-            <div class="bg-white vw-100 border-bottom">
-                <a href="#" class="py-3 px-4 d-inline-block border-end" id="toggle-btn">
-                    <i class="bi bi-arrows-angle-expand"></i>
-                </a>
-            </div>
-        </main>
+<body class="vsc-initialized" id="app">
+    <div :class="{ 'sidebar-toggled': ToggleMenuOnclick }">
+        <div class="d-flex">
+            <aside class="sidebar vh-100 border-end">
+    
+            </aside>
+            <main class="main">
+                <div class="bg-white w-100 border-bottom">
+                    <a href="#" class="py-3 px-4 d-inline-block border-end" id="toggle-btn" @click.preventDefault="changeToggleMenuBtn">
+                        <i class="bi bi-arrows-angle-expand"></i>
+                    </a>
+                </div>
+            </main>
+        </div>
     </div>
 </body>
-<script src="javascripts/all.js"></script>
+<!-- <script src="javascripts/all.js"></script> -->
+<script>
+    const app = {
+        //資料(函式)
+        data() {
+            return {
+                ToggleMenuOnclick: false,
+            }
+        },
+        //生命週期(函式)
+        created() {
+            // this.counter = 10;
+        },
+        //方法(物件)
+        methods: {
+            changeToggleMenuBtn() {
+                this.ToggleMenuOnclick = !this.ToggleMenuOnclick;
+            }
+        }
+    }
+
+    Vue.createApp(app).mount('#app');
+</script>
 </html>
