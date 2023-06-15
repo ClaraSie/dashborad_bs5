@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js" integrity="sha512-39BSQXI5q1XlvVhLfFRidKG8KM6Tr6VS/XSnNo6N/A0ZXexHCeoUI/s+ulujQy3UREjoLNrMnFat8VI0mMugWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>首頁</title>
 </head>
 <body class="vsc-initialized" id="app">
@@ -135,7 +136,7 @@
 
                     </div>
 
-                    <div class="row g-4 mt-2 mt-lg-0">
+                    <div class="row g-4 mt-2 mt-lg-0 mb-4">
                         <div class="col-lg-4">
                             <div class="card shadow-sm h-100">
                                 <div class="card-body">
@@ -143,12 +144,64 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col col-lg-8">
                             <div class="card shadow-sm h-100">
                                 <div class="card-body">
                                     <canvas id="bar-chart" class="img-fulid"></canvas>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent">
+                            <div class="input-group">
+                                <span class="input-group-text border-0 bg-transparent pe-0">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="search" class="form-control border-0 shadow-none">
+                            </div>
+                        </div>
+                        <div class="crad-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0 text-center">
+                                    <thead>
+                                        <tr>
+                                            <template v-for="(item, key) in orderTitle" :key="item">
+                                                <th scope="col" class="py-3 bg-light ps-3" v-if="key === 0">{{ item }}</th>   
+                                                <th v-else-if="key === 6" scope="col" class="py-3 bg-light pe-3">{{ item }}</th> 
+                                                <th v-else scope="col" class="py-3 bg-light">{{ item }}</th>       
+                                            </template>
+                                        </tr>                                        
+                                    </thead>
+                                    <tbody class="text-nowrap">
+                                        <tr v-for="item in orderList" :key="item.orderID">
+                                            <td scope="row" class="ps-4">{{ item.orderID }}</td>
+                                            <td>{{ item.email }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ item.product }}</td>
+                                            <td><div>{{ item.payStatus }}</div></td>
+                                            <td class="text-end">{{ item.price }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-outline-dark me-2" :id="'edit_' + item.orderID">
+                                                    編輯 <i class="bi bi-pen"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end mb-0 py-2">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-caret-left"></i></a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-caret-right"></i></a></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -168,6 +221,33 @@
                 onlineUsers: '3,123',
                 numberOfOrder: '1,099',
                 profit: '204,432',
+                orderTitle: ['訂單編號', 'Email', '用戶姓名', '購買品項', '付款狀態', '購買金額', '編輯'],
+                orderList: [
+                    {
+                        orderID: 'TX123456789',
+                        email: 'ab1234@email.com',
+                        name: '卡小伯',
+                        product: '六角西餐：大麥克全家餐',
+                        payStatus: '尚未付款',
+                        price: 900,
+                    },
+                    {
+                        orderID: 'TX123456781',
+                        email: 'tesst@email.com',
+                        name: 'John',
+                        product: '六角西餐：大麥克全家餐',
+                        payStatus: '尚未付款',
+                        price: 1900,
+                    },
+                    {
+                        orderID: 'TX223456789',
+                        email: 'ab1234@email.com',
+                        name: '卡小伯',
+                        product: '六角西餐：大麥克全家餐',
+                        payStatus: '尚未付款',
+                        price: 900,
+                    }
+                ]
             }
         },
         //生命週期(函式)
