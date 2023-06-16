@@ -173,12 +173,12 @@
                                                     <a href="#" class="btn btn-sm btn-outline-dark" :id="'edit_' + item.orderID">
                                                         編輯 <i class="bi bi-pen"></i>
                                                     </a>
-                                                    <button class="btn btn-sm btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <button class="btn btn-sm btn-outline-dark dropdown-toggle" type="button" :id="'dropdownMenuButton_' + item.orderID" data-bs-toggle="dropdown" aria-expanded="false">
                                                         操作
                                                     </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                                    <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton_' + item.orderID">
                                                         <li><a class="dropdown-item" href="#">修改狀態</a></li>
-                                                        <li><a class="dropdown-item text-danger" href="#">刪除訂單</a></li>
+                                                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" :data-bs-order-id="item.orderID">刪除訂單</a></li>
                                                     </ul>
                                                 </div>                                             
                                             </td>
@@ -198,6 +198,26 @@
                                 </ul>
                             </nav>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">刪除訂單</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>確認刪除「<span id="deleteText"></span>」的訂單嗎</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger">確認刪除</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -207,4 +227,16 @@
 </body>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="javascripts/all.js"></script>
+<script>
+    const modalByDelete = document.getElementById('deleteModal');
+    if (modalByDelete){
+        modalByDelete.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+            const orderID = button.getAttribute('data-bs-order-id');
+            const modalText = modalByDelete.querySelector('#deleteText');
+            modalText.textContent = orderID; //代入ID到text中
+        })
+    }
+</script>
 </html>
